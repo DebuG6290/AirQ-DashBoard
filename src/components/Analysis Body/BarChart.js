@@ -24,7 +24,7 @@ function BarChart(props) {
     // let parameter=props.eleData[0];
     // let paramData=props.eleData[1];
     let eleData=props.eleData;
-    const [modParamData, setModParamData] = useState();    
+    // const [modParamData, setModParamData] = useState();    
     const [labels, setLabels] = useState([]);
     const [chartData, setChartData] = useState([]);
     const [highestData, setHighestData] = useState();
@@ -51,6 +51,27 @@ function BarChart(props) {
             }
             taverage=taverage/props.eleData[1].length;
             taverage=taverage.toFixed(2);
+            for(let labels in tlabels){
+                let dt='';
+                let tm='';
+                let flag=1;
+                for(let letter of tlabels[labels]){
+                    if(flag&&letter!=='T'){
+                        dt+=letter;
+                    }
+                    else if(letter==='T'){
+                        flag=0;
+                        continue;
+                    }
+                    if(!flag&&letter!=='+'){
+                        tm+=letter;
+                    }
+                    else if(!flag){
+                        break;
+                    }
+                }
+                tlabels[labels]=dt+','+tm;
+            }
             console.log(tlabels,ttchartData,thigh,tlow,taverage);
             setAverageData(taverage);
             setHighestData(thigh);
