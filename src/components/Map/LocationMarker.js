@@ -1,12 +1,13 @@
 import React,{useState,useEffect, useRef,useMemo} from 'react'
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap, Tooltip } from 'react-leaflet'
+import { Marker, Popup, useMap, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
+// import { iconPerson } from './Icon';
 
 function LocationMarker(props) {
   // {locationCoords,latestAqData}=props;
     const locationCoords=props.locationCoords;
     const latestAqData=props.latestAqData;
-    const [position, setPosition] = useState(null);
+    // const [position, setPosition] = useState(null);
     const [latestAqDataMeasurements, setLatestAqDataMeasurements] = useState([]);
     const [noLatestAqData, setNoLatestAqData] = useState(true);
     const markerRef=useRef();
@@ -23,9 +24,10 @@ function LocationMarker(props) {
           props.relocateLocationCoords(tempCoords);
         }
       }
-    }), [])
+    }), [props])
     const map=useMap();
     useEffect(() => {
+      // eslint-disable-next-line
       if(latestAqData[0]) {
         setLatestAqDataMeasurements(latestAqData[0].measurements); 
         setNoLatestAqData(false);
@@ -33,11 +35,12 @@ function LocationMarker(props) {
       else {
         setNoLatestAqData(true);
       }
+      
 
     }, [latestAqData]);
     useEffect(() => {
       map.flyTo(locationCoords);
-    }, [locationCoords])
+    }, [locationCoords,props,map])
   
     return noLatestAqData?(<Marker position={locationCoords} draggable ref={markerRef} eventHandlers={eventHandlers}>
           <Tooltip permanent>

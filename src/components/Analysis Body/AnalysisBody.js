@@ -3,15 +3,15 @@ import BarChart from './BarChart';
 import './AnalysisBody.css'
 
 function AnalysisBody(props) {
-    const locationCoords=props.locationCoords;
-    const latestAqData=props.latestAqData;
+    // const locationCoords=props.locationCoords;
+    // const latestAqData=props.latestAqData;
     const parameters=props.parameters;
     const paramData=props.paramData;
     // console.log(paramData);
     const [modifiedParamData, setModifiedParamData] = useState();
-    const [highestData, setHighestData] = useState();
-    const [lowestData, setLowestData] = useState();
-    const [averageData, setAverageData] = useState();
+    // const [highestData, setHighestData] = useState();
+    // const [lowestData, setLowestData] = useState();
+    // const [averageData, setAverageData] = useState();
 
     useEffect(() => {
         let temp=[];
@@ -22,7 +22,7 @@ function AnalysisBody(props) {
         setModifiedParamData(temp);
         
         console.log(temp);
-    }, [paramData])
+    }, [paramData,parameters])
 
     return (
         <div className='analysis-main'>
@@ -34,6 +34,7 @@ function AnalysisBody(props) {
                     if(eleData!==undefined&&eleData&&eleData[1]&&eleData[1][0]){
                         return (<BarChart eleData={eleData}/>)     
                     }
+                    else return null;
                 }):null}
             </div>
         </div>
