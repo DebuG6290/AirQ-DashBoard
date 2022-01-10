@@ -1,0 +1,21 @@
+.analysis-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: azure;
+}
+.analysis-main-heading{
+    font-size: 5vh;
+    font-weight: bold;
+    margin: 3vh;
+    text-decoration: underline;
+    border: 2px solid black;
+    border-radius: 2vh;
+    width: 90vw;
+    text-align: center;
+    /* text-decoration: wavy; */
+}
+.analysis-main-body{
+    
+}

@@ -1,0 +1,14 @@
+.map-container-div{
+    height: 80%;
+    width: 100%;
+    /* align-content: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaflet-container{
+    height: 100%;
+    width: 95%;
+    border-radius: 2vh;
+}
